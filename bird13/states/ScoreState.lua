@@ -27,11 +27,35 @@ end
 
 function ScoreState:render()
     -- simply render the score to the middle of the screen
-    love.graphics.setFont(flappyFont)
-    love.graphics.printf('Oof! You lost!', 0, 64, VIRTUAL_WIDTH, 'center')
+    --love.graphics.setFont(flappyFont)
+    -- love.graphics.printf('Oof! You lost!', 0, 64, VIRTUAL_WIDTH, 'center')
 
     love.graphics.setFont(mediumFont)
-    love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
 
-    love.graphics.printf('Press Enter to Play Again!', 0, 160, VIRTUAL_WIDTH, 'center')
+    local move_down = 95
+    if self.score >= 7 then
+        love.graphics.printf('You are awarded', 0, 54, VIRTUAL_WIDTH, 'center')
+        love.graphics.setFont(flappyFont)
+        love.graphics.printf('PhD in Flappying', 0, 70, VIRTUAL_WIDTH, 'center')
+        love.graphics.draw(certificate_3,  (VIRTUAL_WIDTH / 2) - 50, 100)
+    elseif self.score >= 5 then
+        love.graphics.printf('You are awarded', 0, 54, VIRTUAL_WIDTH, 'center')
+        love.graphics.setFont(flappyFont)
+        love.graphics.printf('MA in Flappying', 0, 70, VIRTUAL_WIDTH, 'center')
+        love.graphics.draw(certificate_2,  (VIRTUAL_WIDTH / 2) - 50, 100)
+    elseif self.score >= 2 then
+        love.graphics.printf('You are awarded', 0, 54, VIRTUAL_WIDTH, 'center')
+        love.graphics.setFont(flappyFont)
+        love.graphics.printf('BSc in Flappying', 0, 70, VIRTUAL_WIDTH, 'center')
+        love.graphics.draw(certificate_1,  (VIRTUAL_WIDTH / 2) - 50, 100)
+    else
+        love.graphics.setFont(flappyFont)
+        love.graphics.printf('Oof! You lost!', 0, 64, VIRTUAL_WIDTH, 'center')
+        move_down = 0
+    end
+
+    love.graphics.setFont(mediumFont)
+    love.graphics.printf('Score: ' .. tostring(self.score), 0, 100+move_down, VIRTUAL_WIDTH, 'center')
+
+    love.graphics.printf('Press Enter to Play Again!', 0, 120+move_down, VIRTUAL_WIDTH, 'center')
 end

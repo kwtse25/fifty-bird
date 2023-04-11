@@ -86,6 +86,12 @@ function love.load()
     hugeFont = love.graphics.newFont('flappy.ttf', 56)
     love.graphics.setFont(flappyFont)
 
+    -- initialize images of certificates
+    certificate_1 = love.graphics.newImage('certificate-1.png')
+    certificate_2 = love.graphics.newImage('certificate-2.png')
+    certificate_3 = love.graphics.newImage('certificate-3.png')
+
+
     -- initialize our table of sounds
     sounds = {
         ['jump'] = love.audio.newSource('jump.wav', 'static'),
